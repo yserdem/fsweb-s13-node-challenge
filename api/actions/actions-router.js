@@ -1,6 +1,6 @@
 // "eylem" routerını buraya yazın
 const router = require("express").Router();
-const projectModel = require("./actions-model");
+const actionsModel = require("./actions-model");
 const mw = require("./actions-middlware");
 
 router.get("/",async (req,res,next)=>{
@@ -18,7 +18,7 @@ router.get("/:id",mw.validateActionID,async (req,res,next)=>{
         next(error);
     }
 });
-router.post("/",mw.validateActionBody,async (req,res,next)=>{
+router.post("/",mw.validateActionBody, async (req,res,next)=>{
     try {
         let actionModel = {
             project_id: req.body.project_id,

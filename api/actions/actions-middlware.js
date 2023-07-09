@@ -18,11 +18,11 @@ const validateActionID = async (req, res, next) => {
 
 const validateActionBody = async (req, res, next) => {
     try {
-        const {projectID, description, notes} = req.body;
-        if (!projectID || !description || !notes){
+        const {project_id, description, notes} = req.body;
+        if (!project_id || !description || !notes){
             res.status(400).json({message:"missing fields"});
         }else {
-            const existProject = await projectModel.get(project_id);
+            const existProject = await projectsModel.get(project_id);
             if(!existProject){
                 res.status(400).json({message:"alanları kontrol ediniz"});
             }else{

@@ -42,7 +42,7 @@ router.put("/:id", mw.validateProjectID, mw.validateProjectBody, async (req, res
     }
     try {
         const updatedProject = await projectModel.update(req.params.id, updated);
-        res.json(updated);
+        res.json(updatedProject);
     } catch (error) {
         next(error);
     }
