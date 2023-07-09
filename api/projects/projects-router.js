@@ -12,4 +12,28 @@ router.get("/", async (req, res, next) => {
     }
 } );
 
+router.get("/:id",mw.validateProjectID, async (req, res, next) => {
+    try {
+        res.json(req.validProjectID);
+    } catch (error) {
+        next(error);
+    }
+})
+
+router.post("/", mw.validateProjectBody, async (req, res, next) => {
+    let inserted = {
+        name: req.body.name,
+        description: req.body.description,
+        completed: req.body.completed
+    }
+    try {
+        const insertedProject = await projectModel.insert(inserted);
+        res.status(201).json(insertedProject)
+    } catch (error) {
+        next(error);
+    }
+})
+
+
+
 module.exports = router;

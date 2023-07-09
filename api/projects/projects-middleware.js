@@ -17,8 +17,8 @@ const validateProjectID = async (req, res, next) => {
 
 const validateProjectBody = async (req, res, next) => {
     try {
-        const {name,description} = req.body;
-        if (!name || !description){
+        const {name,description, completed} = req.body;
+        if (!name || !description || !completed){
             res.status(400).json({message:"missing fields"});
         }else {
             next();
