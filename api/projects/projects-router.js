@@ -48,7 +48,7 @@ router.put("/:id", mw.validateProjectID, mw.validateProjectBody, async (req, res
     }
 })
 
-router.delete("/:id",mw.validateProjectId,async (req,res,next)=>{
+router.delete("/:id",mw.validateProjectID,async (req,res,next)=>{
     try {
         await projectModel.remove(req.params.id);
         res.json({message:"Silme işlemi başarılı"});
@@ -57,7 +57,7 @@ router.delete("/:id",mw.validateProjectId,async (req,res,next)=>{
     }
 });
 
-router.get("/:id/actions", mw.validateProjectId,async(req,res,next)=>{
+router.get("/:id/actions", mw.validateProjectID,async(req,res,next)=>{
     try {
         let projectActions = await projectModel.getProjectActions(req.params.id);
         res.json(projectActions);
